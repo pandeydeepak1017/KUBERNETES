@@ -1,0 +1,10 @@
+apiVersion : v1
+kind : Pod
+metadata :
+  name : bastion-pod
+spec :
+  containers :
+  - name: net
+    image: nginx
+    ports:
+    - containerPort: 80
