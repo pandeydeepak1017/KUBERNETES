@@ -1,0 +1,29 @@
+apiVersion : apps/v1
+kind : Deployment
+metadata :
+  name : todoadd
+spec :
+  replicas : 3
+  selector :
+    matchExpressions :
+    - key : app
+      operator: In
+      values : 
+      - add 
+  strategy :
+    rollingUpdate	:
+      maxSurge : 25%
+      maxUnavailable : 25%
+  template :
+    metadata:
+      labels:
+        app : add
+    spec:
+      containers:
+      - name: deepakadd
+        image: deepak1247/dockerfiles_todo1:2.0
+        ports:
+        - containerPort: 8000
+        env : 
+        - name : CONNECTION_STRING
+          value : Driver={ODBC Driver 17 for SQL Server};Server=tcp:deeeakh.database.windows.net,1433;Database=ffqwwew;Uid=CloudSAf500fb32;Pwd={your_password_here};Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;

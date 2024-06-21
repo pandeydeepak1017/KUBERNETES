@@ -1,0 +1,18 @@
+apiVersion : networking.k8s.io/v1
+kind : Ingress
+metadata :
+  name	: ingressfile
+ 
+spec:
+  ingressClassName: nginx
+  rules : 
+  - host : ui11.hastapanda.site
+    http :
+      paths :
+      - path : "/"
+        pathType: Prefix
+        backend :
+          service :
+            name : ui-service   
+            port :
+              number : 80

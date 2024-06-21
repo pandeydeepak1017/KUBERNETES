@@ -1,0 +1,26 @@
+apiVersion : apps/v1
+kind : Deployment
+metadata :
+  name : todo
+spec :
+  replicas : 3
+  selector :
+    matchExpressions :
+    - key : app
+      operator: In
+      values : 
+      - ui 
+  strategy :
+    rollingUpdate	:
+      maxSurge : 25%
+      maxUnavailable : 25%
+  template :
+    metadata:
+      labels:
+        app : ui
+    spec:
+      containers:
+      - name: deetodo
+        image: pawan7409/microtodoui:v2  
+        ports:
+        - containerPort: 80
